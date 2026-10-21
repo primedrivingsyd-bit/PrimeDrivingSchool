@@ -269,6 +269,7 @@ footer img{height:48px}
         <div class="summary" id="summary"></div>
         <div class="cta" id="fallback">
           <a class="btn" id="mail" href="#">Send by email</a>
+          <a class="btn" id="gmail" href="#" target="_blank" rel="noopener">Send with Gmail</a>
           <a class="btn alt" id="sms" href="#">Send by text</a>
           <button class="btn ghost" id="copy" type="button">Copy answers</button>
         </div>
@@ -362,6 +363,7 @@ Best times: ${vals("times")}
 Notes: ${f.notes.value.trim()||"None"}`;
   document.getElementById("summary").textContent=text;
   document.getElementById("mail").href=`mailto:${EMAIL}?subject=${encodeURIComponent("Driving lesson enquiry – "+f.name.value.trim())}&body=${encodeURIComponent(text)}`;
+  document.getElementById("gmail").href=`https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}&su=${encodeURIComponent("Driving lesson enquiry – "+f.name.value.trim())}&body=${encodeURIComponent(text)}`;
   document.getElementById("sms").href=`sms:${PHONE_SMS}?&body=${encodeURIComponent(text)}`;
   document.getElementById("copy").onclick=async e=>{
     try{await navigator.clipboard.writeText(text);e.target.textContent="Copied"}catch{e.target.textContent="Copy failed"}
@@ -369,11 +371,11 @@ Notes: ${f.notes.value.trim()||"None"}`;
   form.hidden=true;document.getElementById("done").hidden=false;
   if(WEB3FORMS_KEY){
     const fb=document.getElementById("fallback"),ti=document.getElementById("doneTitle"),ms=document.getElementById("doneMsg");
-    fb.hidden=true;ti.textContent="Sending your answers...";ms.textContent="";
+    const sm=document.getElementById("summary");sm.hidden=true;fb.hidden=true;ti.textContent="Sending your answers...";ms.textContent="";
     fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},
       body:JSON.stringify({access_key:WEB3FORMS_KEY,subject:"New lesson enquiry – "+f.name.value.trim(),from_name:"Prime Driving School website",name:f.name.value.trim(),email:f.email.value.trim()||undefined,phone:f.phone.value.trim(),message:text})})
-    .then(r=>r.json()).then(d=>{if(!d.success)throw 0;ti.textContent="Thanks, we've got your details.";ms.textContent="Kenneth will contact you soon. Here's what you sent:"})
-    .catch(()=>{ti.textContent="We couldn't send that automatically.";ms.textContent="Please send your answers using one of the buttons below.";fb.hidden=false});
+    .then(r=>r.json()).then(d=>{if(!d.success)throw (d.message||"unknown error");ti.textContent="Thank you, we've got your details!";ms.innerHTML="Kenneth will contact you soon. If it's urgent, call <a href=\"tel:0423132838\"><b>0423 132 838</b></a>."})
+    .catch(e=>{console.error(e);ti.textContent="We couldn't send that automatically.";sm.hidden=false;ms.textContent="Reason: "+(typeof e==="string"?e:"network or browser blocked it")+". Please send your answers using one of the buttons below.";fb.hidden=false});
   }
   document.getElementById("quote").scrollIntoView();
 }
