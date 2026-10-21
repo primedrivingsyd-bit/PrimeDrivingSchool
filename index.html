@@ -3,13 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <title>Prime Driving School | Driving Lessons in Sydney</title>
 <meta name="description" content="Prime Driving School – driving lessons in Sydney with instructor Kenneth Hon. Learners, P-platers, test prep and refreshers. Call 0423 132 838.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--yellow:#FFD600;--green:#2E7D32;--deep:#1B4D1F;--red:#D32F2F;--blue:#29ABE2;--ink:#1a1a1a;--paper:#fffdf2;--line:#e6dfb8}
+:root{--yellow:#FFD600;--green:#2E7D32;--deep:#1B4D1F;--red:#D32F2F;--blue:#29ABE2;--ink:#1a1a1a;--paper:#fffdf2;--line:#e6dfb8;--surface:#fff;--muted:#555;--hoverbg:#fff8c4;--errc:#D32F2F;color-scheme:light dark}
+header,.hero,footer{--ink:#1a1a1a;color:#1a1a1a}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;font:400 1.0625rem/1.6 "Public Sans",system-ui,sans-serif;color:var(--ink);background:var(--paper)}
@@ -22,8 +24,8 @@ a{color:inherit}
 .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
 .btn{display:inline-block;font:600 1.1rem Fredoka,sans-serif;padding:.8em 1.4em;border-radius:10px;border:3px solid var(--ink);text-decoration:none;cursor:pointer;background:var(--green);color:#fff;box-shadow:0 4px 0 var(--ink);transition:transform .1s,box-shadow .1s}
 .btn:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--ink)}
-.btn.alt{background:var(--blue);color:var(--ink)}
-.btn.ghost{background:#fff;color:var(--ink)}
+.btn.alt{background:var(--blue);color:#1a1a1a}
+.btn.ghost{background:var(--surface);color:var(--ink)}
 /* top bar */
 header{background:var(--yellow);border-bottom:6px solid #fff;box-shadow:0 2px 0 var(--ink)}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0;flex-wrap:wrap}
@@ -47,9 +49,9 @@ nav a:hover{text-decoration:underline}
 section{padding:72px 0}
 .stripe{height:10px;background:repeating-linear-gradient(90deg,var(--green) 0 40px,#fff 40px 80px)}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
-.card{background:#fff;border:3px solid var(--ink);border-radius:12px;padding:20px 22px}
+.card{background:var(--surface);border:3px solid var(--ink);border-radius:12px;padding:20px 22px}
 .card .tag{display:inline-block;width:44px;height:44px;border:3px solid var(--ink);border-radius:8px;display:grid;place-items:center;font:700 1.6rem Fredoka;margin-bottom:12px}
-.tag.y{background:#ffe34d}.tag.r{background:var(--red);color:#fff}.tag.g{background:var(--deep);color:#fff}.tag.b{background:var(--blue)}
+.tag.y{background:#ffe34d;color:#1a1a1a}.tag.r{background:var(--red);color:#fff}.tag.g{background:var(--deep);color:#fff}.tag.b{background:var(--blue);color:#1a1a1a}
 .card p{margin:0}
 .steps{counter-reset:s;display:grid;gap:16px;margin:0;padding:0;list-style:none}
 .steps li{counter-increment:s;display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start}
@@ -66,20 +68,20 @@ section{padding:72px 0}
 .prog i.done{background:var(--green)}
 fieldset{border:0;margin:0;padding:0}
 legend{font:600 1.5rem/1.2 Fredoka;margin-bottom:6px;padding:0}
-.hint{margin:0 0 16px;color:#555;font-size:.95rem}
+.hint{margin:0 0 16px;color:var(--muted);font-size:.95rem}
 .opts{display:grid;gap:10px}
-.opt{display:flex;gap:12px;align-items:center;padding:12px 14px;border:3px solid var(--ink);border-radius:10px;background:#fff;cursor:pointer;font-weight:500}
-.opt:hover{background:#fff8c4}
+.opt{display:flex;gap:12px;align-items:center;padding:12px 14px;border:3px solid var(--ink);border-radius:10px;background:var(--surface);cursor:pointer;font-weight:500}
+.opt:hover{background:var(--hoverbg)}
 .opt input{width:22px;height:22px;accent-color:var(--green);flex:none}
-.opt:has(input:checked){background:var(--yellow)}
+.opt:has(input:checked){background:var(--yellow);color:#1a1a1a}
 .fields{display:grid;gap:14px}
 label.f{display:grid;gap:4px;font-weight:600}
-input[type=text],input[type=tel],input[type=email],textarea{font:inherit;padding:12px;border:3px solid var(--ink);border-radius:10px;background:#fff;width:100%}
+input[type=text],input[type=tel],input[type=email],textarea{font:inherit;padding:12px;border:3px solid var(--ink);border-radius:10px;background:var(--surface);color:inherit;width:100%}
 textarea{min-height:90px;resize:vertical}
 .nav{display:flex;justify-content:space-between;gap:12px;margin-top:24px}
-.err{color:var(--red);font-weight:600;min-height:1.4em;margin:12px 0 0}
+.err{color:var(--errc);font-weight:600;min-height:1.4em;margin:12px 0 0}
 .done-box h3{font-size:1.8rem}
-.summary{background:#fff;border:3px solid var(--ink);border-radius:10px;padding:14px 16px;white-space:pre-wrap;font-size:.95rem;margin:16px 0}
+.summary{background:var(--surface);border:3px solid var(--ink);border-radius:10px;padding:14px 16px;white-space:pre-wrap;font-size:.95rem;margin:16px 0}
 [hidden]{display:none!important}
 /* contact + footer */
 .contact-list{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:1.15rem}
@@ -90,7 +92,7 @@ footer img{height:48px}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
 /* car feature */
-.car-sec{background:#fff;padding:64px 0}
+.car-sec{background:var(--surface);padding:64px 0}
 .car-sec .two{align-items:center}
 .carbox{position:relative;aspect-ratio:16/10;border:4px solid var(--ink);border-radius:16px;overflow:hidden;background:linear-gradient(#bfe6f7 0 68%,#7a7a7a 68%);box-shadow:8px 8px 0 var(--ink)}
 .carbox svg,.carbox img{position:absolute;inset:0;width:100%;height:100%}
@@ -98,6 +100,7 @@ footer img{height:48px}
 .ticks{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px}
 .ticks li{display:flex;gap:12px;align-items:flex-start}
 .ticks li:before{content:"✓";flex:none;display:grid;place-items:center;width:28px;height:28px;background:var(--green);color:#fff;border:2px solid var(--ink);border-radius:6px;font-weight:700}
+@media (prefers-color-scheme:dark){:root{--paper:#161b15;--surface:#212a20;--line:#3a4636;--ink:#f4f1dc;--muted:#b9b9a5;--hoverbg:#2e3a2b;--errc:#ff8a80}}
 </style>
 </head>
 <body>
@@ -192,7 +195,7 @@ footer img{height:48px}
 </section>
 
 <div class="stripe"></div>
-<section id="how" style="background:#fff">
+<section id="how" style="background:var(--surface)">
   <div class="wrap two">
     <div>
       <h2>How it works</h2>
